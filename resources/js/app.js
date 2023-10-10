@@ -1,7 +1,5 @@
 import '../css/app.css'
 import './script.js'
-// import Chart from 'chart.js/auto';
-// window.Chart = Chart;
 
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'

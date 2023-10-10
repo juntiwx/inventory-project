@@ -9,6 +9,7 @@ import "../js/Script/settings.js"
 //  Plugin js for this page
 // import "../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"
 import "../vendors/chart.js/Chart.min.js"
+import "../vendors/chartjs-plugin-datalabels.js/chartjs-plugin-datalabels.min.js"
 // import "../vendors/progressbar.js/progressbar.min.js"
 // Custom js for this page
 import "../js/Script/jquery.cookie.js"
@@ -16,3 +17,4 @@ import "../js/Script/jquery.cookie.js"
 // import "../js/Script/todolist.js"
 
 import "../js/Script/chart.js"
+// import "../js/Script/chartjs-plugin-datalabels.js"

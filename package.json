@@ -17,6 +17,7 @@
     "dependencies": {
         "@inertiajs/vue3": "^1.0.11",
         "chart.js": "^4.4.0",
+        "chart.js-plugin-labels-dv": "^5.0.1-beta",
         "vue": "^3.3.4"
     }
 }
