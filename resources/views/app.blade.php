@@ -12,5 +12,7 @@
 </head>
 <body>
 @inertia
+
+{{--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>--}}
 </body>
 </html>
