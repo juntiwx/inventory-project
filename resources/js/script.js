@@ -18,3 +18,8 @@ import "../js/Script/jquery.cookie.js"
 
 import "../js/Script/chart.js"
 // import "../js/Script/chartjs-plugin-datalabels.js"
+
+// table
+import "../vendors/datatables.net/jquery.dataTables.js"
+import "../vendors/datatables.net-bs4/dataTables.bootstrap4.js"
+import "../js/Script/data-table.js"

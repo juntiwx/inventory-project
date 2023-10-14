@@ -5,3 +5,6 @@
 @import "../vendors/ti-icons/css/themify-icons.css";
 @import "../vendors/typicons/typicons.css";
 @import "style.css";
+
+/*computer-table*/
+@import "../vendors/datatables.net-bs4/dataTables.bootstrap4.css";
