@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         ItemType::seed(storage_path('app/public/files/item_types.csv'));
         Location::seed(storage_path('app/public/files/locations.csv'));
         Objective::seed(storage_path('app/public/files/objectives.csv'));
-        OperatingSystem::seed(storage_path('app/public/files/operating_system.csv'));
+        OperatingSystem::seed(storage_path('app/public/files/operating_systems.csv'));
         ProjectType::seed(storage_path('app/public/files/project_types.csv'));
         Department::seed(storage_path('app/public/files/departments.csv'));
 

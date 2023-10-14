@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item;
+use App\Models\ProjectType;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ItemTableController extends Controller
+class ProjectTypeItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,32 +15,15 @@ class ItemTableController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $asset_computers = Item::query()->get()->transform(function ($asset_computer){
+        $project_types = ProjectType::query()->get()->transform(function ($project_type) {
             return [
-                'id' => $asset_computer->id,
-                'asset_number' => $asset_computer->asset_number,
-                'serial_number' => $asset_computer->serial_number,
-                'asset_name' => $asset_computer->asset_name,
-                'asset_status' => $asset_computer->asset_status,
-                'asset_group' => $asset_computer->asset_group,
-                'asset_date' => $asset_computer->asset_date,
-                'objective' => $asset_computer->objective,
-                'project_service' => $asset_computer->project_service,
-                'owner' => $asset_computer->owner,
-                'department_owner' => $asset_computer->department_owner,
-                'location' => $asset_computer->location,
-                'asset_type' => $asset_computer->asset_type,
-                'brand' => $asset_computer->brand,
-                'generation' => $asset_computer->generation,
-                'ram_type' => $asset_computer->ram_type,
-                'ram_unit' => $asset_computer->ram_unit,
-                'asset_os' => $asset_computer->asset_os,
-                'harddisk' => $asset_computer->harddisk,
+                'id' => $project_type->id,
+                'project_name' => $project_type->project_name,
             ];
         });
 
-        return Inertia::render('ItemTable',[
-            'asset_computers' => $asset_computers
+        return Inertia::render('ProjectTypeTable',[
+            'project_types' => $project_types
         ]);
     }
 

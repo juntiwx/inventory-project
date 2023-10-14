@@ -214,26 +214,52 @@ import { Link } from '@inertiajs/vue3'
                                 <li class="nav-item">
                                     <Link
                                         class="nav-link"
+                                        :href="$route('brands')"
+                                    >
+                                        brands
+                                    </Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
+                                        :href="$route('harddisks')"
+                                    >
+                                        harddisks
+                                    </Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
+                                        :href="$route('item-types')"
+                                    >
+                                        item-types
+                                    </Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
+                                        :href="$route('operating-systems')"
+                                    >
+                                        operating-systems
+                                    </Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
+                                        :href="$route('project-types')"
+                                    >
+                                        project-types
+                                    </Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
                                         :href="$route('items')"
                                     >
                                         Items
                                     </Link>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="horizontal-default-light/pages/forms/advanced_elements.html">Advanced
-                                    Elements</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="horizontal-default-light/pages/forms/validation.html">Validation</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="horizontal-default-light/pages/forms/wizard.html">Wizard</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="horizontal-default-light/pages/forms/text_editor.html">Text
-                                    Editor</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="horizontal-default-light/pages/forms/code_editor.html">Code
-                                    Editor</a></li>
+
                             </ul>
                         </div>
                     </li>
