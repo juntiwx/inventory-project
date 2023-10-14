@@ -1,5 +1,5 @@
 <script setup>
-
+import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>
@@ -9,7 +9,7 @@
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start me-lg-3">
                     <div>
                         <a class="navbar-brand brand-logo" href="horizontal-default-light/index.html">
-                            <!--<img src="{{Vite::asset('resources/images/logo.png')}}" alt="logo"/>-->
+                            <img src="../../../images/logo-light.svg" alt="logo" />
                         </a>
                         <a class="navbar-brand brand-logo-mini" href="horizontal-default-light/index.html">
                             <img src="../../../images/logo-mini-reverse.svg" alt="logo"/>
@@ -199,17 +199,45 @@
             <div class="container">
                 <ul class="nav page-navigation">
                     <li class="nav-item">
-                        <a class="nav-link" href="horizontal-default-light/index.html">
+                        <Link class="nav-link" :href="$route('dashboard')">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
-                        </a>
+                        </Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="horizontal-default-light/pages/widgets/widgets.html">
-                            <i class="icon-cog menu-icon"></i>
-                            <span class="menu-title">Widgets</span>
-                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="icon-bar-graph menu-icon"></i>
+                            <span class="menu-title">Inventory</span>
+                            <i class="menu-arrow"></i></a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
+                                        :href="$route('items')"
+                                    >
+                                        Items
+                                    </Link>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/advanced_elements.html">Advanced
+                                    Elements</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/validation.html">Validation</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/wizard.html">Wizard</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/text_editor.html">Text
+                                    Editor</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/code_editor.html">Code
+                                    Editor</a></li>
+                            </ul>
+                        </div>
                     </li>
+
                     <li class="nav-item mega-menu">
                         <a href="#" class="nav-link">
                             <i class="icon-layoutmenu-icon"></i>

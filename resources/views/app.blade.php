@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="{{ Vite::asset('resources/images/icon.png') }}">
     <title>Dev</title>
+    @routes
     @vite('resources/js/app.js')
     @inertiaHead
 </head>

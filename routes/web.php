@@ -20,5 +20,5 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 });*/
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/item-table', [ItemTableController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/item-table', [ItemTableController::class, 'index'])->name('items');
