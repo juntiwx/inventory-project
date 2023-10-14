@@ -1,8 +1,9 @@
-import '../css/app.css'
-import './script.js'
+import '../css/app.css';
+import '../css/horizontal-layout-light.css';
+import './script.js';
 
-import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/vue3'
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/vue3';
 import AppLayout from "./Pages/Layouts/AppLayout.vue";
 
 createInertiaApp({

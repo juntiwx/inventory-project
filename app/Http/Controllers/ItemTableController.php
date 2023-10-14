@@ -6,14 +6,14 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ComputerTableController extends Controller
+class ItemTableController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         $asset_computers = Item::query()->get()->transform(function ($asset_computer){
             return [
@@ -39,7 +39,7 @@ class ComputerTableController extends Controller
             ];
         });
 
-        return Inertia::render('ComputerTable',[
+        return Inertia::render('ItemTable',[
             'asset_computers' => $asset_computers
         ]);
     }
