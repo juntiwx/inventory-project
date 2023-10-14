@@ -1,7 +1,8 @@
 <script setup>
+import {onMounted, reactive, ref} from "vue";
+import { Link } from '@inertiajs/vue3'
 import Vue3Datatable from "@bhplugin/vue3-datatable";
 import "@bhplugin/vue3-datatable/dist/style.css";
-import {onMounted, reactive, ref} from "vue";
 
 const props = defineProps({
     asset_computers: {type: Object, required: true}
@@ -44,9 +45,23 @@ const params = reactive({ current_page: 1, pagesize: 20, sort_column: 'id', sort
 
 <template>
     <div class="tw-mx-10">
+        <div class="template-demo tw-mb-4 tw-rounded">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-inverse-info">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+                </ol>
+            </nav>
+        </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data table</h4>
+                <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
+                    <h4 class="card-title">Item</h4>
+                    <button type="button" class="btn btn-danger btn-icon-text" style="margin-bottom: 0.5rem;">
+                        <i class="ti-upload btn-icon-prepend"></i>
+                        Add items
+                    </button>
+                </div>
                 <div class="row">
                     <div class="table-responsive">
                         <vue3-datatable
