@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         Objective::seed(storage_path('app/public/files/objectives.csv'));
         OperatingSystem::seed(storage_path('app/public/files/operating_systems.csv'));
         ProjectType::seed(storage_path('app/public/files/project_types.csv'));
-        Department::seed(storage_path('app/public/files/departments.csv'));
+//        Department::seed(storage_path('app/public/files/departments.csv'));
 
         // \App\Models\User::factory(10)->create();
 

@@ -43,7 +43,6 @@
 
 .v-select {
     position: relative;
-    font-family: inherit
 }
 
 .v-select, .v-select * {
@@ -116,7 +115,7 @@
     -moz-appearance: none;
     appearance: none;
     display: flex;
-    padding: 0 0 4px;
+    /*padding: 0 0 4px;*/
     background: none;
     border: var(--vs-border-width) var(--vs-border-style) var(--vs-border-color);
     border-radius: var(--vs-border-radius);
@@ -284,12 +283,16 @@
     -moz-appearance: none;
     appearance: none;
     line-height: var(--vs-line-height);
-    font-size: var(--vs-font-size);
-    border: 1px solid transparent;
+    /*font-size: var(--vs-font-size);*/
+    /*border: 1px solid #dee2e6;*/
     border-left: none;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    height: 2.75rem;
     outline: none;
-    margin: 4px 0 0;
-    padding: 0 7px;
+    /*margin: 4px 0 0;*/
+    padding: 14px 22px;
     background: none;
     box-shadow: none;
     width: 0;
@@ -343,4 +346,23 @@
 
 .vs--loading .vs__spinner {
     opacity: 1
+}
+
+.style-chooser .vs__search::placeholder {
+    /*background: #dfe5fb;*/
+    /*border: none;*/
+    color: #ccced2;
+    /*text-transform: lowercase;*/
+    /*font-variant: small-caps;*/
+}
+
+.style-chooser .vs__dropdown-toggle,
+.style-chooser .vs__dropdown-menu {
+    color: #000000;
+    font-size: 0.875rem;
+}
+
+.style-chooser .vs__clear,
+.style-chooser .vs__open-indicator {
+    fill: #dee2e6;
 }

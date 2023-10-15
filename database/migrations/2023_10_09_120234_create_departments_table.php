@@ -11,13 +11,13 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name_thai');
             $table->string('name_eng');
-            $table->string('shortness');
+            $table->string('shortness')->nullable();
             $table->string('group_eng');
             $table->string('group_thai');
             $table->string('under');

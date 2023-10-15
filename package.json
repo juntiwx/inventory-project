@@ -17,6 +17,7 @@
     "dependencies": {
         "@bhplugin/vue3-datatable": "^1.1.1",
         "@inertiajs/vue3": "^1.0.11",
+        "@vuepic/vue-datepicker": "^7.2.0",
         "chart.js": "^4.4.0",
         "chart.js-plugin-labels-dv": "^5.0.1-beta",
         "vue": "^3.3.4",
