@@ -30,6 +30,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::controller(ItemController::class)->group(function () {
     Route::get('/item-table', 'index')->name('items');
     Route::get('/create-item', 'create')->name('create-item');
+    Route::post('/save-item', 'store')->name('save-item');
 });
 
 

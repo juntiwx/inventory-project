@@ -5,6 +5,7 @@ import VSelect from 'vue-select'
 import '../../css/vue-select.css';
 
 import VueDatePicker from '@vuepic/vue-datepicker';
+import {useForm} from "@inertiajs/vue3";
 
 const props = defineProps({
     objectives: {type: Object, required: true},
@@ -39,6 +40,31 @@ const ram_types = [
     {id: 'DDR4', label: 'DDR4'},
 ]
 
+const form = useForm({
+    asset_number: null,
+    serial_number: null,
+    asset_name: null,
+    asset_status: null,
+    asset_group: null,
+    asset_date: null,
+    objective: null,
+    project_service: null,
+    owner: null,
+    department_owner: null,
+    location: null,
+    asset_type: null,
+    brand: null,
+    generation: null,
+    ram_type: null,
+    ram_unit: null,
+    asset_os: null,
+    harddisk: null,
+});
+
+const saveForm = () => {
+    form.post(window.route('save-item'))
+}
+
 </script>
 
 <template>
@@ -57,7 +83,8 @@ const ram_types = [
                                     name="asset_number"
                                     type="text"
                                     placeholder="Type Something..."
-                                    required>
+                                    v-model="form.asset_number"
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="serial_number">Serial number</label>
@@ -67,7 +94,8 @@ const ram_types = [
                                     name="serial_number"
                                     type="text"
                                     placeholder="Type Something..."
-                                    required>
+                                    v-model="form.serial_number"
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="asset_name">Asset name</label>
@@ -77,7 +105,8 @@ const ram_types = [
                                     name="asset_name"
                                     type="text"
                                     placeholder="Type Something..."
-                                    required>
+                                    v-model="form.asset_name"
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="asset_status">Asset status</label>
@@ -87,6 +116,7 @@ const ram_types = [
                                     name="asset_status"
                                     :options="asset_status"
                                     placeholder="Select Something..."
+                                    v-model="form.asset_status"
                                 >
                                 </v-select>
                             </div>
@@ -98,16 +128,19 @@ const ram_types = [
                                     name="asset_group"
                                     :options="asset_groups"
                                     placeholder="Select Something..."
+                                    v-model="form.asset_group"
                                 ></v-select>
                             </div>
                             <div class="form-group">
                                 <label for="asset_date">Asset date</label>
                                 <VueDatePicker
+                                    class="style-select-date"
                                     id="asset_date"
                                     name="asset_date"
-                                    v-model="date"
                                     format="dd-MMM-yyyy"
                                     :enable-time-picker="false"
+                                    placeholder="Select Date"
+                                    v-model="form.asset_date"
                                 ></VueDatePicker>
                             </div>
                             <div class="form-group">
@@ -118,6 +151,7 @@ const ram_types = [
                                     name="objective"
                                     :options="objectives"
                                     placeholder="Select Something..."
+                                    v-model="form.objective"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -128,6 +162,7 @@ const ram_types = [
                                     name="project_service"
                                     :options="projects"
                                     placeholder="Select Something..."
+                                    v-model="form.project_service"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -138,6 +173,7 @@ const ram_types = [
                                     name="owner"
                                     :options="staff_profiles"
                                     placeholder="Select Something..."
+                                    v-model="form.owner"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -148,6 +184,7 @@ const ram_types = [
                                     name="department_owner"
                                     :options="departments"
                                     placeholder="Select Something..."
+                                    v-model="form.department_owner"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -158,6 +195,7 @@ const ram_types = [
                                     name="location"
                                     :options="locations"
                                     placeholder="Select Something..."
+                                    v-model="form.location"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -168,6 +206,7 @@ const ram_types = [
                                     name="asset_type"
                                     :options="item_types"
                                     placeholder="Select Something..."
+                                    v-model="form.asset_type"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -178,6 +217,7 @@ const ram_types = [
                                     name="brand"
                                     :options="brands"
                                     placeholder="Select Something..."
+                                    v-model="form.brand"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -188,7 +228,8 @@ const ram_types = [
                                     name="generation"
                                     type="text"
                                     placeholder="Type Something..."
-                                    required>
+                                    v-model="form.generation"
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="ram_type">Ram type</label>
@@ -198,6 +239,7 @@ const ram_types = [
                                     name="ram_type"
                                     :options="ram_types"
                                     placeholder="Select Something..."
+                                    v-model="form.ram_type"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -208,7 +250,8 @@ const ram_types = [
                                     name="ram_unit"
                                     type="text"
                                     placeholder="Type Something..."
-                                    required>
+                                    v-model="form.ram_unit"
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="asset_os">Asset os</label>
@@ -218,6 +261,7 @@ const ram_types = [
                                     name="asset_os"
                                     :options="operating_systems"
                                     placeholder="Select Something..."
+                                    v-model="form.asset_os"
                                 ></v-select>
                             </div>
                             <div class="form-group">
@@ -228,9 +272,15 @@ const ram_types = [
                                     name="harddisk"
                                     :options="harddisks"
                                     placeholder="Select Something..."
+                                    v-model="form.harddisk"
                                 ></v-select>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit">
+                            <input
+                                role="button"
+                                @click="saveForm"
+                                class="btn btn-primary"
+                                value="Submit"
+                            />
                         </fieldset>
                     </form>
                 </div>

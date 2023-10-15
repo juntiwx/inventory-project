@@ -12,7 +12,9 @@ use App\Models\Objective;
 use App\Models\OperatingSystem;
 use App\Models\ProjectType;
 use App\Models\StaffProfile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class ItemController extends Controller
@@ -77,7 +79,7 @@ class ItemController extends Controller
         $staff_profiles = StaffProfile::query()->get()->transform(function ($staff_profile) {
             return [
                 'id' => $staff_profile->id,
-                'label' => '(' . $staff_profile->code . ') - ' . $staff_profile->name_thai . ' ' .$staff_profile->surname_thai,
+                'label' => '(' . $staff_profile->code . ') - ' . $staff_profile->name_thai . ' ' . $staff_profile->surname_thai,
             ];
         });
 
@@ -122,6 +124,7 @@ class ItemController extends Controller
                 'label' => '(' . $harddisk->id . ') - ' . $harddisk->harddisk_type . ' (' . $harddisk->harddisk_unit . ')',
             ];
         });
+
         return Inertia::render('AddItem', [
             'objectives' => $objectives,
             'projects' => $projects,
@@ -139,11 +142,33 @@ class ItemController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $validated['asset_number'] = $request->asset_number;
+        $validated['serial_number'] = $request->serial_number;
+        $validated['asset_name'] = $request->asset_name;
+        $validated['asset_status'] = $request->asset_status['id'];
+        $validated['asset_group'] = $request->asset_group['id'];
+        $validated['asset_date'] = Carbon::create($request->asset_date)->format('Y-m-d');
+        $validated['objective'] = $request->objective['id'];
+        $validated['project_service'] = $request->project_service['id'];
+        $validated['owner'] = $request->owner['id'];
+        $validated['department_owner'] = $request->department_owner['id'];
+        $validated['location'] = $request->location['id'];
+        $validated['asset_type'] = $request->asset_type['id'];
+        $validated['brand'] = $request->brand['id'];
+        $validated['generation'] = $request->generation;
+        $validated['ram_type'] = $request->ram_type['id'];
+        $validated['ram_unit'] = $request->ram_unit;
+        $validated['asset_os'] = $request->asset_os['id'];
+        $validated['harddisk'] = $request->harddisk['id'];
+
+//        return $validated;
+        Item::query()->create($validated);
+
+        return redirect()->route('items');
     }
 
     /**

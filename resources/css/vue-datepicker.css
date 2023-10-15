@@ -1,7 +1,7 @@
 .dp__input_wrap {
     position: relative;
     width: 100%;
-    box-sizing: unset
+    box-sizing: unset;
 }
 
 .dp__input_wrap:focus {
@@ -19,9 +19,12 @@
     width: 100%;
     font-size: var(--dp-font-size);
     line-height: calc(var(--dp-font-size) * 1.5);
-    padding: var(--dp-input-padding);
+    /*padding: var(--dp-input-padding);*/
     color: var(--dp-text-color);
-    box-sizing: border-box
+    box-sizing: border-box;
+
+    height: 2.75rem;
+    padding: 14px 22px;
 }
 
 .dp__input::placeholder {
@@ -900,7 +903,7 @@
 }
 
 .dp__action_select {
-    background-color:var(--dp-primary-color);
+    background-color: var(--dp-primary-color);
     /*background: var(--dp-primary-color);*/
     color: var(--dp-primary-text-color)
 }
