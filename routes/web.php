@@ -26,7 +26,13 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/item-table', [ItemController::class, 'index'])->name('items');
+
+Route::controller(ItemController::class)->group(function () {
+    Route::get('/item-table', 'index')->name('items');
+    Route::get('/create-item', 'create')->name('create-item');
+});
+
+
 Route::get('/brand-table', [BrandItemController::class, 'index'])->name('brands');
 Route::get('/harddisk-table', [HarddiskTypeItemController::class, 'index'])->name('harddisks');
 Route::get('/item-type-table', [ItemTypeController::class, 'index'])->name('item-types');
