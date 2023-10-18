@@ -58,7 +58,11 @@ const params = reactive({ current_page: 1, pagesize: 20, sort_column: 'id', sort
             <div class="card-body">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
                     <h4 class="card-title">Item</h4>
-                    <Link :href="$route('create-item')" type="button" class="btn btn-danger btn-icon-text" style="margin-bottom: 0.5rem;">
+                    <Link :href="$route('create-item')"
+                          type="button"
+                          class="btn btn-danger btn-icon-text"
+                          style="margin-bottom: 0.5rem;"
+                    >
                         <i class="ti-upload btn-icon-prepend"></i>
                         Add items
                     </Link>
@@ -66,9 +70,11 @@ const params = reactive({ current_page: 1, pagesize: 20, sort_column: 'id', sort
                 <div class="row">
                     <div class="table-responsive">
                         <vue3-datatable
+                            class="tw-whitespace-nowrap"
                             :rows="rows"
                             :columns="cols"
                             :columnFilter="true"
+                            :sortable="true"
                             :pageSize="params.pagesize"
                             :hasCheckbox="true"
                         > </vue3-datatable>
