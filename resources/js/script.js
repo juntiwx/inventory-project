@@ -10,7 +10,7 @@ import "../js/Script/settings.js"
 import "../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"
 import "../vendors/chart.js/Chart.min.js"
 import "../vendors/chartjs-plugin-datalabels.js/chartjs-plugin-datalabels.min.js"
-// import "../vendors/progressbar.js/progressbar.min.js"
+import "../vendors/progressbar.js/progressbar.min.js"
 // Custom js for this page
 import "../js/Script/jquery.cookie.js"
 // import "../js/Script/dashboard.js"

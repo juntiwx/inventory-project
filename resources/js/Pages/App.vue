@@ -28,6 +28,53 @@
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel"
                              aria-labelledby="overview">
+                            <div class="row my-3">
+                                <div class="col-sm-4">
+                                    <div class="bg-opacity-primary tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <div id="countMuicBuilding" class="progressbar-js-circle pr-2"></div>
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer MUIC Building</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ computer_with_location['count_muic_building'] }} Unit
+                                                <span class="text-small">({{ count_muic_building_percent }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="bg-opacity-success tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <div id="countAditayathornBuilding"
+                                                 class="progressbar-js-circle pr-2"></div>
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer Aditayathorn
+                                                Building</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ computer_with_location['count_aditayathorn_building'] }} Unit
+                                                <span
+                                                    class="text-small">({{ count_aditayathorn_building_percent }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="bg-opacity-info tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <div id="countOtherBuilding" class="progressbar-js-circle pr-2"></div>
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer Other Building</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ computer_with_location['count_other_building'] }} Unit
+                                                <span class="text-small">({{ count_other_building_percent }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-2 d-flex flex-column">
                                     <div class="row flex-grow">
@@ -45,7 +92,7 @@
 
                                                     </div>
                                                     <h6>Asset all type</h6>
-                                                    <p>{{all_inventory_percent}}%</p>
+                                                    <p>{{ all_inventory_percent }}%</p>
                                                     <h5 class="text-primary">{{ computers['all_inventory'] }}</h5>
                                                 </div>
                                             </div>
@@ -61,7 +108,7 @@
                                                         <i class="mdi mdi-arrow-down-bold-hexagon-outline"></i>
                                                     </div>
                                                     <h6>PC Set</h6>
-                                                    <p>{{pc_percent}}%</p>
+                                                    <p>{{ pc_percent }}%</p>
                                                     <h5 class="text-success">{{ computers['pc'] }} </h5>
                                                 </div>
                                             </div>
@@ -77,7 +124,7 @@
                                                         <i class="mdi mdi-account-outline"></i>
                                                     </div>
                                                     <h6>Notebook</h6>
-                                                    <p>{{notebooks_percent}}%</p>
+                                                    <p>{{ notebooks_percent }}%</p>
                                                     <h5 class="text-info">{{ computers['notebooks'] }}</h5>
                                                 </div>
                                             </div>
@@ -93,7 +140,7 @@
                                                         <i class="mdi mdi-cube-outline"></i>
                                                     </div>
                                                     <h6>Monitors</h6>
-                                                    <p>{{monitors_percent}}%</p>
+                                                    <p>{{ monitors_percent }}%</p>
                                                     <h5 class="text-danger">{{ computers['monitors'] }}</h5>
                                                 </div>
                                             </div>
@@ -109,7 +156,7 @@
                                                         <i class="mdi mdi-wallet"></i>
                                                     </div>
                                                     <h6>All in one</h6>
-                                                    <p>{{all_in_one_percent}}%</p>
+                                                    <p>{{ all_in_one_percent }}%</p>
                                                     <h5 class="text-dark">{{ computers['all_in_one'] }}</h5>
                                                 </div>
                                             </div>
@@ -125,7 +172,7 @@
                                                         <i class="mdi mdi-wallet"></i>
                                                     </div>
                                                     <h6>Workstations</h6>
-                                                    <p>{{workstations_percent}}%</p>
+                                                    <p>{{ workstations_percent }}%</p>
                                                     <h5 class="text-warning">{{ computers['workstations'] }}</h5>
                                                 </div>
                                             </div>
@@ -183,9 +230,9 @@ import {onMounted} from "vue";
 
 const props = defineProps({
     computer_with_location: {type: Object, required: true},
-    computers : {type: Object, required: true},
-    count_year_computer : {type: Object, required: true},
-    year_computer_for_building : {type: Object, required: true},
+    computers: {type: Object, required: true},
+    count_year_computer: {type: Object, required: true},
+    year_computer_for_building: {type: Object, required: true},
 });
 
 let all_inventory_percent = (props.computers['all_inventory'] * 100 / props.computers['all_inventory'])
@@ -195,12 +242,16 @@ let monitors_percent = (props.computers['monitors'] * 100 / props.computers['all
 let all_in_one_percent = (props.computers['all_in_one'] * 100 / props.computers['all_inventory']).toFixed(2)
 let workstations_percent = (props.computers['workstations'] * 100 / props.computers['all_inventory']).toFixed(2)
 
+let count_muic_building_percent = (props.computer_with_location['count_muic_building'] * 100 / props.computer_with_location['computers_both_buildings']).toFixed(2)
+let count_aditayathorn_building_percent = (props.computer_with_location['count_aditayathorn_building'] * 100 / props.computer_with_location['computers_both_buildings']).toFixed(2)
+let count_other_building_percent = (props.computer_with_location['count_other_building'] * 100 / props.computer_with_location['computers_both_buildings']).toFixed(2)
+
 let barChartTypeComputerData = {
     labels: ["PC Set", "Notebook", "Monitor", "All in one", "Workstation"],
     datasets: [
         {
             label: "อาคารวิทยาลัยนานาชาติ",
-            data: [props.computer_with_location.pc_muic_building, props.computer_with_location.notebooks_muic_building, props.computer_with_location.monitors_muic_building, props.computer_with_location.all_in_one_muic_building, props.computer_with_location.workstations_muic_building],
+            data: [props.computer_with_location['pc_muic_building'], props.computer_with_location['notebooks_muic_building'], props.computer_with_location['monitors_muic_building'], props.computer_with_location['all_in_one_muic_building'], props.computer_with_location['workstations_muic_building']],
             // data: [10, 10, 10, 10, 10],
             backgroundColor: [
                 "rgba(10,20,30,0.3)",
@@ -220,7 +271,7 @@ let barChartTypeComputerData = {
         },
         {
             label: "อาคารอทิตยาทร",
-            data: [props.computer_with_location.pc_aditayathorn_building, props.computer_with_location.notebooks_aditayathorn_building, props.computer_with_location.monitors_aditayathorn_building, props.computer_with_location.all_in_one_aditayathorn_building, props.computer_with_location.workstations_aditayathorn_building],
+            data: [props.computer_with_location['pc_aditayathorn_building'], props.computer_with_location['notebooks_aditayathorn_building'], props.computer_with_location['monitors_aditayathorn_building'], props.computer_with_location['all_in_one_aditayathorn_building'], props.computer_with_location['workstations_aditayathorn_building']],
             // data: [10, 10, 10, 10, 10],
 
             backgroundColor: [
@@ -318,7 +369,6 @@ const configDonutChartTypeComputer = {
         }
     }
 }
-
 
 let donutChartYearComputerData = {
     datasets: [{
@@ -448,8 +498,6 @@ const configBarChartYearComputer = {
     }
 }
 
-
-
 onMounted(() => {
     new Chart(
         document.getElementById('barChartTypeComputer'),
@@ -468,6 +516,122 @@ onMounted(() => {
         document.getElementById('barChartYearComputer'),
         configBarChartYearComputer
     );
+
+    if ($('#countMuicBuilding').length) {
+        let bar = new ProgressBar.Circle(countMuicBuilding, {
+            color: '#fff',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 15,
+            trailWidth: 15,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {
+                color: '#5275ff',
+                width: 15
+            },
+            to: {
+                color: '#9567e4',
+                width: 15
+            },
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
+
+                let value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value);
+                }
+
+            }
+        });
+
+        bar.text.style.fontSize = '0rem';
+        bar.animate(count_muic_building_percent / 100); // Number from 0.0 to 1.0
+    }
+    if ($('#countAditayathornBuilding').length) {
+        let bar = new ProgressBar.Circle(countAditayathornBuilding, {
+            color: '#fff',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 15,
+            trailWidth: 15,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {
+                color: '#34B1AA',
+                width: 15
+            },
+            to: {
+                color: '#677ae4',
+                width: 15
+            },
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
+
+                let value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value);
+                }
+
+            }
+        });
+
+        bar.text.style.fontSize = '0rem';
+        bar.animate(count_aditayathorn_building_percent / 100); // Number from 0.0 to 1.0
+    }
+    if ($('#countOtherBuilding').length) {
+        let bar = new ProgressBar.Circle(countOtherBuilding, {
+            color: '#fff',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 15,
+            trailWidth: 15,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {
+                color: '#52CDFF',
+                width: 15
+            },
+            to: {
+                color: '#677ae4',
+                width: 15
+            },
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
+
+                let value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value);
+                }
+
+            }
+        });
+
+        bar.text.style.fontSize = '0rem';
+        bar.animate(count_other_building_percent / 100); // Number from 0.0 to 1.0
+    }
 })
+
 
 </script>
