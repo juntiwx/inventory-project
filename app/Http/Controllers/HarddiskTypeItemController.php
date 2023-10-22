@@ -22,7 +22,7 @@ class HarddiskTypeItemController extends Controller
             ];
         });
 
-        return Inertia::render('HarddiskTypeTable', [
+        return Inertia::render('Inventory/HarddiskTypeTable', [
             'harddisks' => $harddisks
         ]);
     }

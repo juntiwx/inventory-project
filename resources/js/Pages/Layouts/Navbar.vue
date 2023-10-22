@@ -263,6 +263,39 @@ import { Link } from '@inertiajs/vue3'
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon-columns menu-icon"></i>
+                            <span class="menu-title">Forms</span>
+                            <i class="menu-arrow"></i></a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item">
+                                    <Link
+                                        class="nav-link"
+                                        :href="$route('form-borrow-equipment')"
+                                    >
+                                        Borrow, return equipment
+                                    </Link>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/advanced_elements.html">Advanced
+                                    Elements</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/validation.html">Validation</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/wizard.html">Wizard</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/text_editor.html">Text
+                                    Editor</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="horizontal-default-light/pages/forms/code_editor.html">Code
+                                    Editor</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
                     <li class="nav-item mega-menu">
                         <a href="#" class="nav-link">

@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ItemType;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ItemTypeController extends Controller
+class BorrowReturnEquipmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return \Illuminate\Http\Response
      */
-    public function index(): \Inertia\Response
+    public function index()
     {
-        $item_types = ItemType::query()->get()->transform(function ($item_type) {
-            return [
-                'id' => $item_type->id,
-                'type_name' => $item_type->type_name,
-            ];
-        });
-
-        return Inertia::render('Inventory/ItemTypeTable', [
-            'item_types' => $item_types
-        ]);
+        //
     }
 
     /**
@@ -34,7 +24,7 @@ class ItemTypeController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('BorrowReturnEquipment/FormBorrowReturnEquipment');
     }
 
     /**

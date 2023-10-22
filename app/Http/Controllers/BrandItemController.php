@@ -22,7 +22,7 @@ class BrandItemController extends Controller
             ];
         });
 
-        return Inertia::render('BrandTable', [
+        return Inertia::render('Inventory/BrandTable', [
             'brands' => $brands
         ]);
     }

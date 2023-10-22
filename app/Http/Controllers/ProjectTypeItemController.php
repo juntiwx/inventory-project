@@ -22,7 +22,7 @@ class ProjectTypeItemController extends Controller
             ];
         });
 
-        return Inertia::render('ProjectTypeTable',[
+        return Inertia::render('Inventory/ProjectTypeTable',[
             'project_types' => $project_types
         ]);
     }

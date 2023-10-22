@@ -23,7 +23,7 @@ class OperatingSystemItemController extends Controller
             ];
         });
 
-        return Inertia::render('OperatingSystemTable',[
+        return Inertia::render('Inventory/OperatingSystemTable',[
             'operating_systems' => $operating_systems
         ]);
     }

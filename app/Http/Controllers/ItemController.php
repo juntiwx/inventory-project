@@ -50,7 +50,7 @@ class ItemController extends Controller
             ];
         });
 
-        return Inertia::render('ItemTable', [
+        return Inertia::render('Inventory/ItemTable', [
             'asset_computers' => $asset_computers
         ]);
     }
@@ -125,7 +125,7 @@ class ItemController extends Controller
             ];
         });
 
-        return Inertia::render('AddItem', [
+        return Inertia::render('Inventory/Add/AddItem', [
             'objectives' => $objectives,
             'projects' => $projects,
             'staff_profiles' => $staff_profiles,

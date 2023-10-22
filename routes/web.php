@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BorrowReturnEquipmentController;
 use App\Http\Controllers\BrandItemController;
 use App\Http\Controllers\HarddiskTypeItemController;
 use App\Http\Controllers\ItemController;
@@ -33,9 +34,12 @@ Route::controller(ItemController::class)->group(function () {
     Route::post('/save-item', 'store')->name('save-item');
 });
 
-
 Route::get('/brand-table', [BrandItemController::class, 'index'])->name('brands');
 Route::get('/harddisk-table', [HarddiskTypeItemController::class, 'index'])->name('harddisks');
 Route::get('/item-type-table', [ItemTypeController::class, 'index'])->name('item-types');
 Route::get('/operating-systems-table', [OperatingSystemItemController::class, 'index'])->name('operating-systems');
 Route::get('/project-type-table', [ProjectTypeItemController::class, 'index'])->name('project-types');
+
+Route::controller(BorrowReturnEquipmentController::class)->group(function (){
+    Route::get('/form-borrow-equipment','create')->name('form-borrow-equipment');
+});

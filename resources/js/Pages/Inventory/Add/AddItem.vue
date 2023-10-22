@@ -2,7 +2,7 @@
 import {ref} from 'vue';
 
 import VSelect from 'vue-select'
-import '../../css/vue-select.css';
+import '../../../../css/vue-select.css';
 
 import VueDatePicker from '@vuepic/vue-datepicker';
 import {useForm} from "@inertiajs/vue3";
