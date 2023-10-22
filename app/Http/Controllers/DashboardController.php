@@ -90,6 +90,11 @@ class DashboardController extends Controller
             'all_in_one_aditayathorn_building' => Item::query()->whereRaw('asset_type = 6 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_aditayathorn_building)->count(),
             'workstations_aditayathorn_building' => Item::query()->whereRaw('asset_type = 21 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_aditayathorn_building)->count(),
             'count_aditayathorn_building' => Item::query()->whereRaw('asset_type IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_aditayathorn_building)->count(),
+            'pc_other_building' => Item::query()->whereRaw('asset_type = 1 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_other_building)->count(),
+            'notebooks_other_building' => Item::query()->whereRaw('asset_type = 2 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_other_building)->count(),
+            'monitors_other_building' => Item::query()->whereRaw('asset_type = 4 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_other_building)->count(),
+            'all_in_one_other_building' => Item::query()->whereRaw('asset_type = 6 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_other_building)->count(),
+            'workstations_other_building' => Item::query()->whereRaw('asset_type = 21 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_other_building)->count(),
             'count_other_building' => Item::query()->whereRaw('asset_type IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location', $location_other_building)->count(),
         ];
 
@@ -138,6 +143,10 @@ class DashboardController extends Controller
             'three_years_computer_aditayathorn_building' => $this->countYearWithLocations($location_aditayathorn_building, $five, $three),
             'five_years_computer_aditayathorn_building' => $this->countYearWithLocations($location_aditayathorn_building, $seven, $five),
             'sever_years_computer_aditayathorn_building' => $this->overSevenYearWithLocations($location_aditayathorn_building, $seven),
+            'less_three_years_computer_other_building' => $this->countYearWithLocations($location_other_building, $three, $now),
+            'three_years_computer_other_building' => $this->countYearWithLocations($location_other_building, $five, $three),
+            'five_years_computer_other_building' => $this->countYearWithLocations($location_other_building, $seven, $five),
+            'sever_years_computer_other_building' => $this->overSevenYearWithLocations($location_other_building, $seven),
         ];
 
         /*$tmp = [];

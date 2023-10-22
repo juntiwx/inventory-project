@@ -55,7 +55,9 @@
                                             <h2 class="tw-text-base mb-0 fw-bold">
                                                 {{ computer_with_location['count_aditayathorn_building'] }} Unit
                                                 <span
-                                                    class="text-small">({{ count_aditayathorn_building_percent }}%)</span>
+                                                    class="text-small">({{
+                                                        count_aditayathorn_building_percent
+                                                    }}%)</span>
                                             </h2>
                                         </div>
                                     </div>
@@ -289,7 +291,27 @@ let barChartTypeComputerData = {
                 "rgba(50,150,200,1)"
             ],
             borderWidth: 1
-        }
+        },
+        {
+            label: "อาคารอื่นๆ",
+            data: [props.computer_with_location['pc_other_building'], props.computer_with_location['notebooks_other_building'], props.computer_with_location['monitors_other_building'], props.computer_with_location['all_in_one_other_building'], props.computer_with_location['workstations_other_building']],
+            // data: [10, 10, 10, 10, 10],
+            backgroundColor: [
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+            ],
+            borderColor: [
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+        },
     ]
 };
 const configBarChartTypeComputer = {
@@ -423,11 +445,11 @@ const configDonutChartYearComputer = {
 }
 
 let barChartYearComputerData = {
-    labels: ["อาคารวิทยาลัยนานาชาติ", "อาคารอทิตยาทร"],
+    labels: ["อาคารวิทยาลัยนานาชาติ", "อาคารอทิตยาทร", "อาคารอื่นๆ"],
     datasets: [
         {
             label: "0 - 3 ปี",
-            data: [props.year_computer_for_building.less_three_years_computer_muic_building, props.year_computer_for_building.less_three_years_computer_aditayathorn_building],
+            data: [props.year_computer_for_building.less_three_years_computer_muic_building, props.year_computer_for_building.less_three_years_computer_aditayathorn_building, props.year_computer_for_building.less_three_years_computer_other_building],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
 
@@ -440,7 +462,7 @@ let barChartYearComputerData = {
         },
         {
             label: "3 ปี 1 เดือน - 5 ปี",
-            data: [props.year_computer_for_building.three_years_computer_muic_building, props.year_computer_for_building.three_years_computer_aditayathorn_building],
+            data: [props.year_computer_for_building.three_years_computer_muic_building, props.year_computer_for_building.three_years_computer_aditayathorn_building, props.year_computer_for_building.three_years_computer_other_building],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.5)',
             ],
@@ -451,7 +473,7 @@ let barChartYearComputerData = {
         },
         {
             label: "5 ปี 1 เดือน - 7 ปี",
-            data: [props.year_computer_for_building.five_years_computer_muic_building, props.year_computer_for_building.five_years_computer_aditayathorn_building],
+            data: [props.year_computer_for_building.five_years_computer_muic_building, props.year_computer_for_building.five_years_computer_aditayathorn_building, props.year_computer_for_building.five_years_computer_other_building],
             backgroundColor: [
                 'rgba(255, 206, 86, 0.5)',
             ],
@@ -462,7 +484,7 @@ let barChartYearComputerData = {
         },
         {
             label: "7 ปีขึ้นไป",
-            data: [props.year_computer_for_building.sever_years_computer_muic_building, props.year_computer_for_building.sever_years_computer_aditayathorn_building],
+            data: [props.year_computer_for_building.sever_years_computer_muic_building, props.year_computer_for_building.sever_years_computer_aditayathorn_building, props.year_computer_for_building.sever_years_computer_other_building],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.5)',
             ],
