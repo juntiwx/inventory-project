@@ -1,3 +1,4 @@
+import '../images/icon.png';
 import '../css/app.css';
 import '../css/horizontal-layout-light.css';
 import './script.js';
