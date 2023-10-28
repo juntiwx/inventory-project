@@ -19,8 +19,8 @@
         "@inertiajs/vue3": "^1.0.11",
         "@vuepic/vue-datepicker": "^7.2.0",
         "autosize": "^6.0.1",
-        "chart.js": "^4.4.0",
-        "chart.js-plugin-labels-dv": "^5.0.1-beta",
+        "chart.js": "^3.3.0",
+        "progressbar.js": "^1.1.1",
         "vue": "^3.3.4",
         "vue-select": "^4.0.0-beta.6"
     }

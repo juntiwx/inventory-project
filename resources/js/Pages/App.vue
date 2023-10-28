@@ -229,7 +229,7 @@
 </template>
 <script setup>
 import {onMounted} from "vue";
-
+import ProgressBar from "progressbar.js";
 const props = defineProps({
     computer_with_location: {type: Object, required: true},
     computers: {type: Object, required: true},
