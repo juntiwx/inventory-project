@@ -39,7 +39,7 @@ class ItemController extends Controller
                 'project_service' => $asset_computer->project_service,
                 'owner' => $asset_computer->owners,
                 'department_owner' => $asset_computer->department_owner,
-                'location' => $asset_computer->location,
+                'location' => $asset_computer->location_name,
                 'asset_type' => $asset_computer->asset_type,
                 'brand' => $asset_computer->brand,
                 'generation' => $asset_computer->generation,

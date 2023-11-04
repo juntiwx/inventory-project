@@ -10,7 +10,7 @@ trait CSVLoadable
         static::insertRows($item);
     }
 
-    public static function loadCSV($path)
+    public static function loadCSV($path): array
     {
         if (!file_exists($path)) {
             return [];
@@ -24,7 +24,7 @@ trait CSVLoadable
         return $items;
     }
 
-    public static function insertRows(&$items)
+    public static function insertRows(&$items): void
     {
         $now = now();
         $items = array_map(function ($item) use ($now) {
@@ -35,6 +35,6 @@ trait CSVLoadable
             return $item;
         }, $items);
 
-        static::insert($items);
+        static::query()->insert($items);
     }
 }

@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('project_service');
             $table->string('owner');
             $table->string('department_owner');
-            $table->string('location');
+            $table->foreignId('location_id');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->string('asset_type');
             $table->string('brand');
             $table->string('generation');

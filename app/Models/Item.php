@@ -39,6 +39,40 @@ class Item extends Model
         return $this->belongsTo(Objective::class);
     }
 
+    public function objectiveName() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->objective['id'] . ') - ' . $this->objective['name_th'],
+        );
+    }
+
+    public function itemDate() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => Carbon::parse($this->asset_date)->format('d-m-Y'),
+        );
+    }
+
+    public function itemGroup() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->asset_group === 'buy' || $this->asset_group === 'Buy' ? "เครื่องซื้อ"
+                : 'เครื่องสัญญาเช่า',
+        );
+    }
+
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function LocationName() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->location['id'] . ') - ' . $this->location['building_name'] .' : '. $this->location['room_name'],
+        );
+    }
+
     public function staffProfile(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(StaffProfile::class, 'owner', 'code');
@@ -57,26 +91,7 @@ class Item extends Model
         return $this->belongsTo(Department::class, 'department_owner', 'id');
     }
 
-    public function itemDate() :Attribute
-    {
-        return Attribute::make(
-            get: fn() => Carbon::parse($this->asset_date)->thaidate('d-m-Y'),
-        );
-    }
-    public function objectiveName() :Attribute
-    {
-        return Attribute::make(
-            get: fn() => '(' . $this->objective['id'] . ') - ' . $this->objective['name_th'],
-        );
-    }
 
-    public function itemGroup() :Attribute
-    {
-        return Attribute::make(
-            get: fn() => $this->asset_group === 'buy' || $this->asset_group === 'Buy' ? "เครื่องซื้อ"
-            : 'เครื่องสัญญาเช่า',
-        );
-    }
 
     public function ownerDepartment()
     {
