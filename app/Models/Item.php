@@ -6,6 +6,7 @@ use App\Traits\CSVLoadable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
@@ -18,7 +19,7 @@ class Item extends Model
         'asset_status',
         'asset_group',
         'asset_date',
-        'objective',
+        'objective_id',
         'project_service',
         'owner',
         'department_owner',
@@ -32,7 +33,12 @@ class Item extends Model
         'harddisk',
     ];
 
-    public function staffProfile()
+    public function objective(): BelongsTo
+    {
+        return $this->belongsTo(Objective::class);
+    }
+
+    public function staffProfile(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(StaffProfile::class, 'owner', 'code');
     }
@@ -47,7 +53,14 @@ class Item extends Model
 
     public function departments()
     {
-        return $this->belongsTo(Department::class, 'department_owner:', 'id');
+        return $this->belongsTo(Department::class, 'department_owner', 'id');
+    }
+
+    public function objectiveName() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->objective['id'] . ') - ' . $this->objective['name_th'],
+        );
     }
 
     public function ownerDepartment()

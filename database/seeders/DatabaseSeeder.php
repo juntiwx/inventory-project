@@ -22,17 +22,24 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        Brand::seed(storage_path('app/public/files/brands.csv'));
-        HarddiskType::seed(storage_path('app/public/files/harddisk_types.csv'));
-        Item::seed(storage_path('app/public/files/items.csv'));
-        ItemType::seed(storage_path('app/public/files/item_types.csv'));
-        Location::seed(storage_path('app/public/files/locations.csv'));
-        Objective::seed(storage_path('app/public/files/objectives.csv'));
-        OperatingSystem::seed(storage_path('app/public/files/operating_systems.csv'));
-        ProjectType::seed(storage_path('app/public/files/project_types.csv'));
+        //old
+//        Brand::seed(storage_path('app/public/files/brands.csv'));
+//        HarddiskType::seed(storage_path('app/public/files/harddisk_types.csv'));
+//        Item::seed(storage_path('app/public/files/items.csv'));
+//        ItemType::seed(storage_path('app/public/files/item_types.csv'));
+//        Location::seed(storage_path('app/public/files/locations.csv'));
+//        Objective::seed(storage_path('app/public/files/objectives.csv'));
+//        OperatingSystem::seed(storage_path('app/public/files/operating_systems.csv'));
+//        ProjectType::seed(storage_path('app/public/files/project_types.csv'));
 //        Department::seed(storage_path('app/public/files/departments.csv'));
+
+        //new
+        Objective::seed(storage_path('app/public/data/objectives.csv'));
+        Item::seed(storage_path('app/public/data/items.csv'));
+
+
 
         // \App\Models\User::factory(10)->create();
 

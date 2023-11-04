@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('asset_status');
             $table->string('asset_group');
             $table->string('asset_date')->nullable();
-            $table->string('objective');
+            $table->foreignId('objective_id');
+            $table->foreign('objective_id')->references('id')->on('objectives');
             $table->string('project_service');
             $table->string('owner');
             $table->string('department_owner');

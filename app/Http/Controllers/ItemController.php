@@ -35,7 +35,7 @@ class ItemController extends Controller
                 'asset_status' => $asset_computer->asset_status,
                 'asset_group' => $asset_computer->asset_group,
                 'asset_date' => $asset_computer->asset_date,
-                'objective' => $asset_computer->objective,
+                'objective' => $asset_computer->objective_name,
                 'project_service' => $asset_computer->project_service,
                 'owner' => $asset_computer->owners,
                 'department_owner' => $asset_computer->department_owner,

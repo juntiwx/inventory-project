@@ -11,11 +11,11 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('objectives', function (Blueprint $table) {
             $table->id();
-            $table->string('objective_name');
+            $table->string('name_th');
             $table->timestamps();
         });
     }
