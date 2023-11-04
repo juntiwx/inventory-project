@@ -33,8 +33,8 @@ class ItemController extends Controller
                 'serial_number' => $asset_computer->serial_number,
                 'asset_name' => $asset_computer->asset_name,
                 'asset_status' => $asset_computer->asset_status,
-                'asset_group' => $asset_computer->asset_group,
-                'asset_date' => $asset_computer->asset_date,
+                'asset_group' => $asset_computer->item_group,
+                'asset_date' => $asset_computer->item_date,
                 'objective' => $asset_computer->objective_name,
                 'project_service' => $asset_computer->project_service,
                 'owner' => $asset_computer->owners,
@@ -65,7 +65,7 @@ class ItemController extends Controller
         $objectives = Objective::query()->get()->transform(function ($objective) {
             return [
                 'id' => $objective->id,
-                'label' => '(' . $objective->id . ') - ' . $objective->objective_name,
+                'label' => '(' . $objective->id . ') - ' . $objective->name_th,
             ];
         });
 

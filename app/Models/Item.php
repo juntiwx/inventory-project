@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\CSVLoadable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -56,10 +57,24 @@ class Item extends Model
         return $this->belongsTo(Department::class, 'department_owner', 'id');
     }
 
+    public function itemDate() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => Carbon::parse($this->asset_date)->thaidate('d-m-Y'),
+        );
+    }
     public function objectiveName() :Attribute
     {
         return Attribute::make(
             get: fn() => '(' . $this->objective['id'] . ') - ' . $this->objective['name_th'],
+        );
+    }
+
+    public function itemGroup() :Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->asset_group === 'buy' || $this->asset_group === 'Buy' ? "เครื่องซื้อ"
+            : 'เครื่องสัญญาเช่า',
         );
     }
 

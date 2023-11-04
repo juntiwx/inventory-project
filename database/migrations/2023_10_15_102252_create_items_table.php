@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('asset_name');
             $table->string('asset_status');
             $table->string('asset_group');
-            $table->string('asset_date')->nullable();
+            $table->date('asset_date');
             $table->foreignId('objective_id');
             $table->foreign('objective_id')->references('id')->on('objectives');
             $table->string('project_service');
@@ -43,7 +43,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('items');
     }

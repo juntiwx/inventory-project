@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         //new
         Objective::seed(storage_path('app/public/data/objectives.csv'));
         Item::seed(storage_path('app/public/data/items.csv'));
+        Location::seed(storage_path('app/public/files/locations.csv'));
 
 
 
