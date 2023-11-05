@@ -40,7 +40,7 @@ class ItemController extends Controller
                 'owner' => $asset_computer->owners,
                 'department_owner' => $asset_computer->department_name,
                 'location' => $asset_computer->location_name,
-                'asset_type' => $asset_computer->asset_type,
+                'asset_type' => $asset_computer->type_name,
                 'brand' => $asset_computer->brand,
                 'generation' => $asset_computer->generation,
                 'ram_type' => $asset_computer->ram_type,
@@ -100,7 +100,7 @@ class ItemController extends Controller
         $item_types = ItemType::query()->get()->transform(function ($item_type) {
             return [
                 'id' => $item_type->id,
-                'label' => '(' . $item_type->id . ') - ' . $item_type->type_name,
+                'label' => '(' . $item_type->id . ') - ' . $item_type->name_th,
             ];
         });
 

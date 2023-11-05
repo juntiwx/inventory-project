@@ -30,7 +30,8 @@ return new class extends Migration
             $table->unsignedInteger('staff_profile_id')->nullable();
             $table->foreignId('location_id');
             $table->foreign('location_id')->references('id')->on('locations');
-            $table->string('asset_type');
+            $table->foreignId('item_type_id');
+            $table->foreign('item_type_id')->references('id')->on('item_types');
             $table->string('brand');
             $table->string('generation');
             $table->string('ram_type')->nullable();

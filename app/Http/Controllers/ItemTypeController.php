@@ -18,7 +18,7 @@ class ItemTypeController extends Controller
         $item_types = ItemType::query()->get()->transform(function ($item_type) {
             return [
                 'id' => $item_type->id,
-                'type_name' => $item_type->type_name,
+                'type_name' => $item_type->name_th,
             ];
         });
 

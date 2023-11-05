@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
             ProjectTypeSeeder::class,
             DepartmentSeeder::class,
             StaffProfileSeeder::class,
+            ItemTypeSeeder::class,
             ItemSeeder::class,
         ]);
 

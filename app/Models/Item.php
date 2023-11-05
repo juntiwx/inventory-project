@@ -110,6 +110,16 @@ class Item extends Model
         );
     }
 
+    public function type()
+    {
+        return $this->belongsTo(ItemType::class,'item_type_id','id');
+    }
 
+    public function typeName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->type->id . ') - ' . $this->type->name_th,
+        );
+    }
 
 }
