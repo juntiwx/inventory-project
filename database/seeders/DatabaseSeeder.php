@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             StaffProfileSeeder::class,
             ItemTypeSeeder::class,
+            BrandSeeder::class,
+            OperatingSystemSeeder::class,
             ItemSeeder::class,
         ]);
 

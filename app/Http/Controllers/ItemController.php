@@ -41,11 +41,11 @@ class ItemController extends Controller
                 'department_owner' => $asset_computer->department_name,
                 'location' => $asset_computer->location_name,
                 'asset_type' => $asset_computer->type_name,
-                'brand' => $asset_computer->brand,
+                'brand' => $asset_computer->brand_name,
                 'generation' => $asset_computer->generation,
                 'ram_type' => $asset_computer->ram_type,
                 'ram_unit' => $asset_computer->ram_unit,
-                'asset_os' => $asset_computer->asset_os,
+                'asset_os' => $asset_computer->os_name,
                 'harddisk' => $asset_computer->harddisk,
             ];
         });

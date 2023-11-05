@@ -122,4 +122,29 @@ class Item extends Model
         );
     }
 
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+
+    public function brandName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->brand->id . ') - ' . $this->brand->brand_name,
+        );
+    }
+
+    public function os()
+    {
+        return $this->belongsTo(OperatingSystem::class,'os_id','id');
+    }
+
+    public function osName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->os !== NULL ? '(' . $this->os->id . ') - ' . $this->os->os_name
+                : '',
+        );
+    }
+
 }

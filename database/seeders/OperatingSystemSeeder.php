@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Objective;
+use App\Models\OperatingSystem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ObjectiveSeeder extends Seeder
+class OperatingSystemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,15 +16,15 @@ class ObjectiveSeeder extends Seeder
     public function run(): void
     {
         //
-//        Objective::seed(storage_path('app/public/data/objectives.csv'));
 
-        $csvData = fopen(storage_path('app/public/data/objectives.csv'), 'r');
+        $csvData = fopen(storage_path('app/public/data/operating_systems.csv'), 'r');
         $transRow = true;
         while (($data = fgetcsv($csvData, 555, ',')) !== false) {
             if (!$transRow) {
-                Objective::query()->create([
+                OperatingSystem::query()->create([
                     'id' => $data['0'],
-                    'name_th' => $data['1'],
+                    'os_name' => $data['1'],
+                    'os_group' => $data['1'],
                 ]);
             }
             $transRow = false;

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('operating_systems', function (Blueprint $table) {
             $table->id();
             $table->string('os_name');
-            $table->string('osgroup');
+            $table->string('os_group');
             $table->timestamps();
         });
     }

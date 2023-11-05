@@ -32,11 +32,12 @@ return new class extends Migration
             $table->foreign('location_id')->references('id')->on('locations');
             $table->foreignId('item_type_id');
             $table->foreign('item_type_id')->references('id')->on('item_types');
-            $table->string('brand');
+            $table->foreignId('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands');
             $table->string('generation');
             $table->string('ram_type')->nullable();
             $table->string('ram_unit')->nullable();
-            $table->string('asset_os')->nullable();
+            $table->unsignedInteger('os_id')->nullable();
             $table->string('harddisk')->nullable();
             $table->timestamps();
         });

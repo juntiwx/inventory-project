@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Objective;
+use App\Models\Brand;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ObjectiveSeeder extends Seeder
+class BrandSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,15 +16,15 @@ class ObjectiveSeeder extends Seeder
     public function run(): void
     {
         //
-//        Objective::seed(storage_path('app/public/data/objectives.csv'));
+//        Brand::seed(storage_path('app/public/data/brands.csv'));
 
-        $csvData = fopen(storage_path('app/public/data/objectives.csv'), 'r');
+        $csvData = fopen(storage_path('app/public/data/brands.csv'), 'r');
         $transRow = true;
         while (($data = fgetcsv($csvData, 555, ',')) !== false) {
             if (!$transRow) {
-                Objective::query()->create([
+                Brand::query()->create([
                     'id' => $data['0'],
-                    'name_th' => $data['1'],
+                    'brand_name' => $data['1'],
                 ]);
             }
             $transRow = false;

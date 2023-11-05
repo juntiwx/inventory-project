@@ -16,8 +16,8 @@ class ProjectTypeSeeder extends Seeder
     public function run(): void
     {
         //
-        ProjectType::seed(storage_path('app/public/data/project_types.csv'));
-        /*$csvData = fopen(storage_path('app/public/data/project_types.csv'), 'r');
+//        ProjectType::seed(storage_path('app/public/data/project_types.csv'));
+        $csvData = fopen(storage_path('app/public/data/project_types.csv'), 'r');
         $transRow = true;
         while (($data = fgetcsv($csvData, 555, ',')) !== false) {
             if (!$transRow) {
@@ -28,6 +28,6 @@ class ProjectTypeSeeder extends Seeder
             }
             $transRow = false;
         }
-        fclose($csvData);*/
+        fclose($csvData);
     }
 }
