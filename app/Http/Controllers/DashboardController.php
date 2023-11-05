@@ -15,7 +15,7 @@ class DashboardController extends Controller
     protected function countYearWithLocations($location, $start, $end): int
     {
         return Item::query()
-            ->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน" AND asset_date IS NOT NULL')
+            ->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1 AND asset_date IS NOT NULL')
             ->whereIn('location_id', $location)
             ->whereBetween('asset_date', [$start, $end])
             ->count();
@@ -24,7 +24,7 @@ class DashboardController extends Controller
     protected function overSevenYearWithLocations($location, $end): int
     {
         return Item::query()
-            ->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน" AND asset_date IS NOT NULL')
+            ->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1 AND asset_date IS NOT NULL')
             ->whereIn('location_id', $location)
             ->whereDate('asset_date', '<', $end)
             ->count();
@@ -33,7 +33,7 @@ class DashboardController extends Controller
     protected function countYearWithOutLocations($start, $end): int
     {
         return Item::query()
-            ->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน" AND asset_date IS NOT NULL')
+            ->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1 AND asset_date IS NOT NULL')
             ->whereBetween('asset_date', [$start, $end])
             ->count();
     }
@@ -41,7 +41,7 @@ class DashboardController extends Controller
     protected function overSevenYearWithOutLocations($end): int
     {
         return Item::query()
-            ->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน" AND asset_date IS NOT NULL')
+            ->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1 AND asset_date IS NOT NULL')
             ->whereDate('asset_date', '<', $end)
             ->count();
     }
@@ -77,25 +77,25 @@ class DashboardController extends Controller
             ->pluck('id');
 
         $computer_with_location = [
-            'computers_both_buildings' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน"')->count(),
-            'pc_muic_building' => Item::query()->whereRaw('item_type_id = 1 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_muic_building)->count(),
-            'notebooks_muic_building' => Item::query()->whereRaw('item_type_id = 2 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_muic_building)->count(),
-            'monitors_muic_building' => Item::query()->whereRaw('item_type_id = 4 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_muic_building)->count(),
-            'all_in_one_muic_building' => Item::query()->whereRaw('item_type_id = 6 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_muic_building)->count(),
-            'workstations_muic_building' => Item::query()->whereRaw('item_type_id = 21 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_muic_building)->count(),
-            'count_muic_building' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_muic_building)->count(),
-            'pc_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 1 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_aditayathorn_building)->count(),
-            'notebooks_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 2 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_aditayathorn_building)->count(),
-            'monitors_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 4 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_aditayathorn_building)->count(),
-            'all_in_one_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 6 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_aditayathorn_building)->count(),
-            'workstations_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 21 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_aditayathorn_building)->count(),
-            'count_aditayathorn_building' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_aditayathorn_building)->count(),
-            'pc_other_building' => Item::query()->whereRaw('item_type_id = 1 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_other_building)->count(),
-            'notebooks_other_building' => Item::query()->whereRaw('item_type_id = 2 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_other_building)->count(),
-            'monitors_other_building' => Item::query()->whereRaw('item_type_id = 4 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_other_building)->count(),
-            'all_in_one_other_building' => Item::query()->whereRaw('item_type_id = 6 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_other_building)->count(),
-            'workstations_other_building' => Item::query()->whereRaw('item_type_id = 21 AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_other_building)->count(),
-            'count_other_building' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน"')->whereIn('location_id', $location_other_building)->count(),
+            'computers_both_buildings' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1')->count(),
+            'pc_muic_building' => Item::query()->whereRaw('item_type_id = 1 AND item_status_id LIKE 1')->whereIn('location_id', $location_muic_building)->count(),
+            'notebooks_muic_building' => Item::query()->whereRaw('item_type_id = 2 AND item_status_id LIKE 1')->whereIn('location_id', $location_muic_building)->count(),
+            'monitors_muic_building' => Item::query()->whereRaw('item_type_id = 4 AND item_status_id LIKE 1')->whereIn('location_id', $location_muic_building)->count(),
+            'all_in_one_muic_building' => Item::query()->whereRaw('item_type_id = 6 AND item_status_id LIKE 1')->whereIn('location_id', $location_muic_building)->count(),
+            'workstations_muic_building' => Item::query()->whereRaw('item_type_id = 21 AND item_status_id LIKE 1')->whereIn('location_id', $location_muic_building)->count(),
+            'count_muic_building' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1')->whereIn('location_id', $location_muic_building)->count(),
+            'pc_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 1 AND item_status_id LIKE 1')->whereIn('location_id', $location_aditayathorn_building)->count(),
+            'notebooks_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 2 AND item_status_id LIKE 1')->whereIn('location_id', $location_aditayathorn_building)->count(),
+            'monitors_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 4 AND item_status_id LIKE 1')->whereIn('location_id', $location_aditayathorn_building)->count(),
+            'all_in_one_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 6 AND item_status_id LIKE 1')->whereIn('location_id', $location_aditayathorn_building)->count(),
+            'workstations_aditayathorn_building' => Item::query()->whereRaw('item_type_id = 21 AND item_status_id LIKE 1')->whereIn('location_id', $location_aditayathorn_building)->count(),
+            'count_aditayathorn_building' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1')->whereIn('location_id', $location_aditayathorn_building)->count(),
+            'pc_other_building' => Item::query()->whereRaw('item_type_id = 1 AND item_status_id LIKE 1')->whereIn('location_id', $location_other_building)->count(),
+            'notebooks_other_building' => Item::query()->whereRaw('item_type_id = 2 AND item_status_id LIKE 1')->whereIn('location_id', $location_other_building)->count(),
+            'monitors_other_building' => Item::query()->whereRaw('item_type_id = 4 AND item_status_id LIKE 1')->whereIn('location_id', $location_other_building)->count(),
+            'all_in_one_other_building' => Item::query()->whereRaw('item_type_id = 6 AND item_status_id LIKE 1')->whereIn('location_id', $location_other_building)->count(),
+            'workstations_other_building' => Item::query()->whereRaw('item_type_id = 21 AND item_status_id LIKE 1')->whereIn('location_id', $location_other_building)->count(),
+            'count_other_building' => Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1')->whereIn('location_id', $location_other_building)->count(),
         ];
 
         /**
@@ -103,11 +103,11 @@ class DashboardController extends Controller
          */
         $computers = [
             'all_inventory' => Item::query()->count(),
-            'pc' => Item::query()->whereRaw('item_type_id = 1 AND asset_status LIKE "กำลังใช้งาน"')->count(),
-            'notebooks' => Item::query()->whereRaw('item_type_id = 2 AND asset_status LIKE "กำลังใช้งาน"')->count(),
-            'monitors' => Item::query()->whereRaw('item_type_id = 4 AND asset_status LIKE "กำลังใช้งาน"')->count(),
-            'all_in_one' => Item::query()->whereRaw('item_type_id = 6 AND asset_status LIKE "กำลังใช้งาน"')->count(),
-            'workstations' => Item::query()->whereRaw('item_type_id = 21 AND asset_status LIKE "กำลังใช้งาน"')->count(),
+            'pc' => Item::query()->whereRaw('item_type_id = 1 AND item_status_id LIKE 1')->count(),
+            'notebooks' => Item::query()->whereRaw('item_type_id = 2 AND item_status_id LIKE 1')->count(),
+            'monitors' => Item::query()->whereRaw('item_type_id = 4 AND item_status_id LIKE 1')->count(),
+            'all_in_one' => Item::query()->whereRaw('item_type_id = 6 AND item_status_id LIKE 1')->count(),
+            'workstations' => Item::query()->whereRaw('item_type_id = 21 AND item_status_id LIKE 1')->count(),
         ];
 
 
@@ -124,7 +124,7 @@ class DashboardController extends Controller
         $five = Carbon::now()->subYears(5)->format('Y-m-d');
         $seven = Carbon::now()->subYears(7)->format('Y-m-d');
 
-        $asset_computer_with_asset_date_count = Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND asset_status LIKE "กำลังใช้งาน" AND asset_date IS NOT NULL')->count();
+        $asset_computer_with_asset_date_count = Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND item_status_id LIKE 1 AND asset_date IS NOT NULL')->count();
 
 //        dd($asset_computer_with_asset_date_count);
         $count_year_computer = [
@@ -149,6 +149,8 @@ class DashboardController extends Controller
             'sever_years_computer_other_building' => $this->overSevenYearWithLocations($location_other_building, $seven),
         ];
 
+        $count_computer_for_reserve = Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND objective_id LIKE 7')->count();
+
         /*$tmp = [];
         for ($i = 0; $i < $query_departments->count(); $i++) {
             $tmp['id'] = $query_departments[$i]['id'];
@@ -161,6 +163,7 @@ class DashboardController extends Controller
             'computers' => $computers,
             'count_year_computer' => $count_year_computer,
             'year_computer_for_building' => $year_computer_for_building,
+            'count_computer_for_reserve' => $count_computer_for_reserve,
         ]);
     }
 

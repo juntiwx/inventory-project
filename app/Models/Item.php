@@ -17,22 +17,34 @@ class Item extends Model
         'asset_number',
         'serial_number',
         'asset_name',
-        'asset_status',
+        'item_status_id',
         'asset_group',
         'asset_date',
         'objective_id',
-        'project_service',
-        'owner',
-        'department_owner',
-        'location',
-        'asset_type',
-        'brand',
+        'project_type_id',
+        'department_id',
+        'staff_profile_id',
+        'location_id',
+        'item_type_id',
+        'brand_id',
         'generation',
         'ram_type',
         'ram_unit',
-        'asset_os',
+        'os_id',
         'harddisk',
     ];
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(ItemStatus::class,'item_status_id','id');
+    }
+
+    public function statusName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->status->id . ') - ' . $this->status->name_th,
+        );
+    }
 
     public function objective(): BelongsTo
     {
@@ -85,7 +97,7 @@ class Item extends Model
         );
     }
 
-    public function department()
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
@@ -97,7 +109,7 @@ class Item extends Model
         );
     }
 
-    public function profile()
+    public function profile(): BelongsTo
     {
         return $this->belongsTo(StaffProfile::class,'staff_profile_id','id');
     }
@@ -110,7 +122,7 @@ class Item extends Model
         );
     }
 
-    public function type()
+    public function type(): BelongsTo
     {
         return $this->belongsTo(ItemType::class,'item_type_id','id');
     }
@@ -122,7 +134,7 @@ class Item extends Model
         );
     }
 
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class,'brand_id','id');
     }
@@ -134,7 +146,7 @@ class Item extends Model
         );
     }
 
-    public function os()
+    public function os(): BelongsTo
     {
         return $this->belongsTo(OperatingSystem::class,'os_id','id');
     }

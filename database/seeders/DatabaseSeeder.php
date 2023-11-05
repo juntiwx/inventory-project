@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
             ItemTypeSeeder::class,
             BrandSeeder::class,
             OperatingSystemSeeder::class,
+            ItemStatusSeeder::class,
             ItemSeeder::class,
         ]);
 

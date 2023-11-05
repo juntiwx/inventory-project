@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('asset_number');
             $table->string('serial_number');
             $table->string('asset_name')->nullable();
-            $table->string('asset_status');
+            $table->foreignId('item_status_id');
+            $table->foreign('item_status_id')->references('id')->on('objectives');
             $table->string('asset_group');
             $table->date('asset_date');
             $table->foreignId('objective_id');

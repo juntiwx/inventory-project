@@ -30,48 +30,15 @@
                              aria-labelledby="overview">
                             <div class="row my-3">
                                 <div class="col-sm-4">
-                                    <div class="bg-opacity-primary tw-flex tw-justify-between">
+                                    <div class="bg-opacity-danger tw-flex tw-justify-between">
                                         <div class="circle-progress-width">
-                                            <div id="countMuicBuilding" class="progressbar-js-circle pr-2"></div>
+                                            <img :src="ReserveImg">
                                         </div>
                                         <div class="tw-flex tw-flex-col tw-items-end">
-                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer MUIC Building</h1>
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">คอมพิวเตอร์สำรองใช้งาน</h1>
                                             <h2 class="tw-text-base mb-0 fw-bold">
-                                                {{ computer_with_location['count_muic_building'] }} Unit
+                                                {{ count_computer_for_reserve}} เครื่อง
                                                 <span class="text-small">({{ count_muic_building_percent }}%)</span>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="bg-opacity-success tw-flex tw-justify-between">
-                                        <div class="circle-progress-width">
-                                            <div id="countAditayathornBuilding"
-                                                 class="progressbar-js-circle pr-2"></div>
-                                        </div>
-                                        <div class="tw-flex tw-flex-col tw-items-end">
-                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer Aditayathorn
-                                                Building</h1>
-                                            <h2 class="tw-text-base mb-0 fw-bold">
-                                                {{ computer_with_location['count_aditayathorn_building'] }} Unit
-                                                <span
-                                                    class="text-small">({{
-                                                        count_aditayathorn_building_percent
-                                                    }}%)</span>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="bg-opacity-info tw-flex tw-justify-between">
-                                        <div class="circle-progress-width">
-                                            <div id="countOtherBuilding" class="progressbar-js-circle pr-2"></div>
-                                        </div>
-                                        <div class="tw-flex tw-flex-col tw-items-end">
-                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer Other Building</h1>
-                                            <h2 class="tw-text-base mb-0 fw-bold">
-                                                {{ computer_with_location['count_other_building'] }} Unit
-                                                <span class="text-small">({{ count_other_building_percent }}%)</span>
                                             </h2>
                                         </div>
                                     </div>
@@ -182,6 +149,55 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row my-3">
+                                <div class="col-sm-4">
+                                    <div class="bg-opacity-primary tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <div id="countMuicBuilding" class="progressbar-js-circle pr-2"></div>
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer MUIC Building</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ computer_with_location['count_muic_building'] }} Unit
+                                                <span class="text-small">({{ count_muic_building_percent }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="bg-opacity-success tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <div id="countAditayathornBuilding"
+                                                 class="progressbar-js-circle pr-2"></div>
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer Aditayathorn
+                                                Building</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ computer_with_location['count_aditayathorn_building'] }} Unit
+                                                <span
+                                                    class="text-small">({{
+                                                        count_aditayathorn_building_percent
+                                                    }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="bg-opacity-info tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <div id="countOtherBuilding" class="progressbar-js-circle pr-2"></div>
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">Computer Other Building</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ computer_with_location['count_other_building'] }} Unit
+                                                <span class="text-small">({{ count_other_building_percent }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 grid-margin stretch-card">
                                     <div class="card">
@@ -230,11 +246,14 @@
 <script setup>
 import {onMounted} from "vue";
 import ProgressBar from "progressbar.js";
+import ReserveImg from "../../images/reserve.png";
+
 const props = defineProps({
     computer_with_location: {type: Object, required: true},
     computers: {type: Object, required: true},
     count_year_computer: {type: Object, required: true},
     year_computer_for_building: {type: Object, required: true},
+    count_computer_for_reserve: {type: Object, required: true},
 });
 
 let all_inventory_percent = (props.computers['all_inventory'] * 100 / props.computers['all_inventory'])

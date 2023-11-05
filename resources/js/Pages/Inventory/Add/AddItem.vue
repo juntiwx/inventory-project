@@ -8,6 +8,7 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 import {useForm} from "@inertiajs/vue3";
 
 const props = defineProps({
+    statuses: {type: Object, required: true},
     objectives: {type: Object, required: true},
     projects: {type: Object, required: true},
     staff_profiles: {type: Object, required: true},
@@ -20,15 +21,6 @@ const props = defineProps({
 })
 
 const date = ref();
-
-const asset_status = [
-    {id: 'กำลังใช้งาน', label: 'กำลังใช้งาน'},
-    {id: 'เสียรอดำเนินการ', label: 'เสียรอดำเนินการ'},
-    {id: 'รอส่งจำหน่าย', label: 'รอส่งจำหน่าย'},
-    {id: 'รอส่งซ่อม', label: 'รอส่งซ่อม'},
-    {id: 'กำลังเคลม', label: 'กำลังเคลม'},
-    {id: 'จำหน่าย', label: 'จำหน่าย'},
-]
 
 const asset_groups = [
     {id: 'Buy', label: 'Buy'},
@@ -44,7 +36,7 @@ const form = useForm({
     asset_number: null,
     serial_number: null,
     asset_name: null,
-    asset_status: null,
+    item_status_id: null,
     asset_group: null,
     asset_date: null,
     objective: null,
@@ -109,14 +101,14 @@ const saveForm = () => {
                                 >
                             </div>
                             <div class="form-group">
-                                <label for="asset_status">Asset status</label>
+                                <label for="item_status_id">Asset status</label>
                                 <v-select
                                     class="style-chooser"
-                                    id="asset_status"
-                                    name="asset_status"
-                                    :options="asset_status"
+                                    id="item_status_id"
+                                    name="item_status_id"
+                                    :options="statuses"
                                     placeholder="Select Something..."
-                                    v-model="form.asset_status"
+                                    v-model="form.item_status_id"
                                 >
                                 </v-select>
                             </div>

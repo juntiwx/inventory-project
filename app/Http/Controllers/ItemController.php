@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Department;
 use App\Models\HarddiskType;
 use App\Models\Item;
+use App\Models\ItemStatus;
 use App\Models\ItemType;
 use App\Models\Location;
 use App\Models\Objective;
@@ -32,7 +33,7 @@ class ItemController extends Controller
                 'asset_number' => $asset_computer->asset_number,
                 'serial_number' => $asset_computer->serial_number,
                 'asset_name' => $asset_computer->asset_name,
-                'asset_status' => $asset_computer->asset_status,
+                'asset_status' => $asset_computer->status_name,
                 'asset_group' => $asset_computer->item_group,
                 'asset_date' => $asset_computer->item_date,
                 'objective' => $asset_computer->objective_name,
@@ -62,6 +63,13 @@ class ItemController extends Controller
      */
     public function create()
     {
+        $statuses = ItemStatus::query()->get()->transform(function ($status) {
+            return [
+                'id' => $status->id,
+                'label' => '(' . $status->id . ') - ' . $status->name_th,
+            ];
+        });
+
         $objectives = Objective::query()->get()->transform(function ($objective) {
             return [
                 'id' => $objective->id,
@@ -126,6 +134,7 @@ class ItemController extends Controller
         });
 
         return Inertia::render('Inventory/Add/AddItem', [
+            'statuses' => $statuses,
             'objectives' => $objectives,
             'projects' => $projects,
             'staff_profiles' => $staff_profiles,
@@ -146,24 +155,26 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+//        return $request;
+
         $validated['asset_number'] = $request->asset_number;
         $validated['serial_number'] = $request->serial_number;
         $validated['asset_name'] = $request->asset_name;
-        $validated['asset_status'] = $request->asset_status['id'];
+        $validated['item_status_id'] = $request->item_status_id['id'];
         $validated['asset_group'] = $request->asset_group['id'];
         $validated['asset_date'] = Carbon::create($request->asset_date)->format('Y-m-d');
-        $validated['objective'] = $request->objective['id'];
-        $validated['project_service'] = $request->project_service['id'];
-        $validated['owner'] = $request->owner['id'];
-        $validated['department_owner'] = $request->department_owner['id'];
-        $validated['location'] = $request->location['id'];
-        $validated['asset_type'] = $request->asset_type['id'];
-        $validated['brand'] = $request->brand['id'];
+        $validated['objective_id'] = $request->objective['id'];
+        $validated['project_type_id'] = $request->project_service['id'];
+        $validated['department_id'] = $request->department_owner['id'];
+        $validated['staff_profile_id'] = $request->owner !== null ? $request->owner['id'] : null;
+        $validated['location_id'] = $request->location['id'];
+        $validated['item_type_id'] = $request->asset_type['id'];
+        $validated['brand_id'] = $request->brand['id'];
         $validated['generation'] = $request->generation;
         $validated['ram_type'] = $request->ram_type['id'];
         $validated['ram_unit'] = $request->ram_unit;
-        $validated['asset_os'] = $request->asset_os['id'];
-        $validated['harddisk'] = $request->harddisk['id'];
+        $validated['os_id'] = $request->asset_os['id'];
+        $validated['harddisk'] = $request->harddisk !== null ? $request->harddisk['id'] : null;
 
 //        return $validated;
         Item::query()->create($validated);
