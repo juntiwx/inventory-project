@@ -39,6 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ObjectiveSeeder::class,
             LocationSeeder::class,
+            ProjectTypeSeeder::class,
+            DepartmentSeeder::class,
+            StaffProfileSeeder::class,
             ItemSeeder::class,
         ]);
 

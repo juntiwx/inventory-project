@@ -36,9 +36,9 @@ class ItemController extends Controller
                 'asset_group' => $asset_computer->item_group,
                 'asset_date' => $asset_computer->item_date,
                 'objective' => $asset_computer->objective_name,
-                'project_service' => $asset_computer->project_service,
+                'project_service' => $asset_computer->project_type_name,
                 'owner' => $asset_computer->owners,
-                'department_owner' => $asset_computer->department_owner,
+                'department_owner' => $asset_computer->department_name,
                 'location' => $asset_computer->location_name,
                 'asset_type' => $asset_computer->asset_type,
                 'brand' => $asset_computer->brand,
@@ -72,14 +72,14 @@ class ItemController extends Controller
         $projects = ProjectType::query()->get()->transform(function ($project) {
             return [
                 'id' => $project->id,
-                'label' => '(' . $project->id . ') - ' . $project->project_name,
+                'label' => '(' . $project->id . ') - ' . $project->name_th,
             ];
         });
 
         $staff_profiles = StaffProfile::query()->get()->transform(function ($staff_profile) {
             return [
                 'id' => $staff_profile->id,
-                'label' => '(' . $staff_profile->code . ') - ' . $staff_profile->name_thai . ' ' . $staff_profile->surname_thai,
+                'label' => '(' . $staff_profile->code . ') - ' . $staff_profile->name_th . ' ' . $staff_profile->surname_th,
             ];
         });
 

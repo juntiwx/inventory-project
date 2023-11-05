@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('name_thai');
-            $table->string('name_eng');
+            $table->string('name_th');
+            $table->string('name_en');
             $table->string('shortness')->nullable();
-            $table->string('group_eng');
-            $table->string('group_thai');
+            $table->string('group_en');
+            $table->string('group_th');
             $table->string('under');
             $table->string('level');
             $table->timestamps();

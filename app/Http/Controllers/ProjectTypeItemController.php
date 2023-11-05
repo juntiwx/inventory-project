@@ -18,7 +18,7 @@ class ProjectTypeItemController extends Controller
         $project_types = ProjectType::query()->get()->transform(function ($project_type) {
             return [
                 'id' => $project_type->id,
-                'project_name' => $project_type->project_name,
+                'project_name' => $project_type->name_th,
             ];
         });
 

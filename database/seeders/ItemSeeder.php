@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Item;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ItemSeeder extends Seeder
 {
@@ -16,7 +17,10 @@ class ItemSeeder extends Seeder
     public function run(): void
     {
         //
-        Item::seed(storage_path('app/public/data/items.csv'));
+//        Item::seed(storage_path('app/public/data/new_project_inventory.csv'));
+
+
+        DB::unprepared(file_get_contents(storage_path('app/public/data/items.sql')));
 
         /*$csvData = fopen(storage_path('app/public/data/items.csv'), 'r');
         $transRow = true;

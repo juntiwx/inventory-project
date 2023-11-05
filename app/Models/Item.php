@@ -66,39 +66,50 @@ class Item extends Model
         return $this->belongsTo(Location::class);
     }
 
-    public function LocationName() :Attribute
+    public function locationName(): Attribute
     {
         return Attribute::make(
             get: fn() => '(' . $this->location['id'] . ') - ' . $this->location['building_name'] .' : '. $this->location['room_name'],
         );
     }
 
-    public function staffProfile(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function projectType(): BelongsTo
     {
-        return $this->belongsTo(StaffProfile::class, 'owner', 'code');
+        return $this->belongsTo(ProjectType::class);
+    }
+
+    public function projectTypeName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->projectType['id'] . ') - ' . $this->projectType['name_th'],
+        );
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function departmentName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => '(' . $this->department['id'] . ') - ' . $this->department['name_th'],
+        );
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(StaffProfile::class,'staff_profile_id','id');
     }
 
     public function owners(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->staffProfile !== NULL ? '(' . $this->staffProfile->code . ') - ' . $this->staffProfile->name_thai . ' ' . $this->staffProfile->surname_thai
+            get: fn() => $this->profile !== NULL ? '(' . $this->profile->code . ') - ' . $this->profile->name_th . ' ' . $this->profile->surname_th
                 : '',
         );
     }
 
-    public function departments()
-    {
-        return $this->belongsTo(Department::class, 'department_owner', 'id');
-    }
 
-
-
-    public function ownerDepartment()
-    {
-        return Attribute::make(
-            get: fn() => $this->department !== NULL ? '(' . $this->department->id . ') - ' . $this->department->name_thai
-                : '',
-        );
-    }
 
 }

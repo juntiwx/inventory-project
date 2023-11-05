@@ -17,11 +17,11 @@ return new class extends Migration {
             $table->string('code');
             $table->string('email')->nullable();
             $table->string('muic_account')->nullable();
-            $table->string('name_thai');
-            $table->string('surname_thai');
+            $table->string('name_th');
+            $table->string('surname_th');
             $table->string('name');
             $table->string('surname');
-            $table->string('position_thai')->nullable();
+            $table->string('position_th')->nullable();
             $table->string('position')->nullable();
             $table->string('department')->nullable();
             $table->string('degree')->nullable();
