@@ -29,16 +29,30 @@
                         <div class="tab-pane fade show active" id="overview" role="tabpanel"
                              aria-labelledby="overview">
                             <div class="row my-3">
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="bg-opacity-danger tw-flex tw-justify-between">
                                         <div class="circle-progress-width">
                                             <img :src="ReserveImg">
                                         </div>
                                         <div class="tw-flex tw-flex-col tw-items-end">
-                                            <h1 class="tw-text-base tw-font-semibold mb-2">คอมพิวเตอร์สำรองใช้งาน</h1>
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">คอมพิวเตอร์สำรองใช้งาน อาคารอทิตยาทร</h1>
                                             <h2 class="tw-text-base mb-0 fw-bold">
-                                                {{ count_computer_for_reserve}} เครื่อง
-                                                <span class="text-small">({{ count_muic_building_percent }}%)</span>
+                                                {{ count_computer_for_reserve['aditayathorn'] }} เครื่อง
+                                                <span class="text-small">({{ count_computer_for_reserve_aditayathorn_percent }}%)</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="bg-opacity-success tw-flex tw-justify-between">
+                                        <div class="circle-progress-width">
+                                            <img :src="ReserveImg">
+                                        </div>
+                                        <div class="tw-flex tw-flex-col tw-items-end">
+                                            <h1 class="tw-text-base tw-font-semibold mb-2">คอมพิวเตอร์สำรองใช้งาน อาคารวิทยาลัยนานาชาติ</h1>
+                                            <h2 class="tw-text-base mb-0 fw-bold">
+                                                {{ count_computer_for_reserve['muic'] }} เครื่อง
+                                                <span class="text-small">({{ count_computer_for_reserve_muic_percent }}%)</span>
                                             </h2>
                                         </div>
                                     </div>
@@ -266,6 +280,9 @@ let workstations_percent = (props.computers['workstations'] * 100 / props.comput
 let count_muic_building_percent = (props.computer_with_location['count_muic_building'] * 100 / props.computer_with_location['computers_both_buildings']).toFixed(2)
 let count_aditayathorn_building_percent = (props.computer_with_location['count_aditayathorn_building'] * 100 / props.computer_with_location['computers_both_buildings']).toFixed(2)
 let count_other_building_percent = (props.computer_with_location['count_other_building'] * 100 / props.computer_with_location['computers_both_buildings']).toFixed(2)
+
+let count_computer_for_reserve_aditayathorn_percent = (props.count_computer_for_reserve['aditayathorn'] * 100 / props.count_computer_for_reserve['all']).toFixed(2)
+let count_computer_for_reserve_muic_percent = (props.count_computer_for_reserve['muic'] * 100 / props.count_computer_for_reserve['all']).toFixed(2)
 
 let barChartTypeComputerData = {
     labels: ["PC Set", "Notebook", "Monitor", "All in one", "Workstation"],

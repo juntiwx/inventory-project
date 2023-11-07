@@ -149,7 +149,23 @@ class DashboardController extends Controller
             'sever_years_computer_other_building' => $this->overSevenYearWithLocations($location_other_building, $seven),
         ];
 
-        $count_computer_for_reserve = Item::query()->whereRaw('item_type_id IN (1,2,4,6,21) AND objective_id LIKE 7')->count();
+        $count_computer_for_reserve = [
+            'all' => Item::query()
+                ->whereRaw('item_type_id IN (1,2,4,6,21)')
+                ->where('item_status_id', '=', '7')
+                ->count(),
+            'aditayathorn' => Item::query()
+                ->whereRaw('item_type_id IN (1,2,4,6,21)')
+                ->where('item_status_id', '=', '7')
+                ->whereIn('location_id', $location_aditayathorn_building)
+                ->count(),
+            'muic' => Item::query()
+                ->whereRaw('item_type_id IN (1,2,4,6,21)')
+                ->where('item_status_id', '=', '7')
+                ->whereIn('location_id', $location_muic_building)
+                ->count()
+        ];
+
 
         /*$tmp = [];
         for ($i = 0; $i < $query_departments->count(); $i++) {
@@ -158,7 +174,7 @@ class DashboardController extends Controller
         }
         dd($computers_with_departments);*/
 
-        return Inertia::render('App',[
+        return Inertia::render('App', [
             'computer_with_location' => $computer_with_location,
             'computers' => $computers,
             'count_year_computer' => $count_year_computer,
